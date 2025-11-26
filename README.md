@@ -5,12 +5,10 @@ BookingAPI реализует CRUD-функционал для работы с �
 
 # Технологии
 
-- .NET 6 / .NET 8  
-- ASP.NET Web API  
-- Entity Framework Core  
-- PostgreSQL / MSSQL / SQLite  
-- REST API  
-- Docker  
+- .NET 6
+- ASP.NET Web API
+- Entity Framework Core
+- REST API
 
 # Функции 
 
