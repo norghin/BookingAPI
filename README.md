@@ -22,4 +22,9 @@ BookingAPI реализует CRUD-функционал для работы с �
 - DELETE /api/booking/{id}
 Удаляет бронирование по ID.
 
+# SwaggerUI
+
+Проект включает в себя SwaggerUI для ознакомления с формами передаваемых данных и схемами
+
 <img width="1207" height="638" alt="image" src="https://github.com/user-attachments/assets/b4e523bc-3723-4455-bfd5-73d09f39b6a3" />
+
