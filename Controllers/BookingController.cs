@@ -21,6 +21,17 @@ namespace YachtCareAPI.Controllers
             return Ok(_service.GetAll());
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Booking> GetById(int id)
+        {
+            var booking = _service.GetById(id);
+
+            if (booking == null)
+                return NotFound();
+
+            return Ok(booking);
+        }
+
         [HttpPost]
         public ActionResult<Booking> Create(BookingRequest request)
         {
@@ -54,6 +65,22 @@ namespace YachtCareAPI.Controllers
             return Ok(updated);
         }
 
+        [HttpPost("{id}/price-item")]
+        public ActionResult<Booking> AddPriceItem(int id, PriceItem item)
+        {
+            if (string.IsNullOrWhiteSpace(item.Name))
+                return BadRequest("Название не может быть пустым.");
+
+            if (item.Price <= 0)
+                return BadRequest("Цена должна быть больше нуля.");
+
+            var updated = _service.AddPriceItem(id, item);
+            if (updated == null)
+                return NotFound($"Бронирование с ID {id} не найдено.");
+
+            return Ok(updated);
+        }
+
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -63,5 +90,16 @@ namespace YachtCareAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}/price-item/{index}")]
+        public ActionResult RemovePriceItem(int id, int index)
+        {
+            var removed = _service.RemovePriceItem(id, index);
+            if (!removed)
+                return NotFound("Материал или заявка не найдены");
+
+            return NoContent();
+        }
+
     }
 }

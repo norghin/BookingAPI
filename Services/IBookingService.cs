@@ -11,6 +11,8 @@ namespace YachtCareAPI.Services
         // Добавляем новые методы
         Booking? GetById(int id);
         Booking? Update(int id, BookingRequest request);
+        Booking? AddPriceItem(int bookingId, PriceItem item);
+        bool RemovePriceItem(int bookingId, int itemIndex);
         bool Remove(int id);
     }
 }
